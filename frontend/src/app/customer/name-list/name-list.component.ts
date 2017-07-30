@@ -57,7 +57,6 @@ export class NameListComponent implements OnInit {
   }
 
   onBack(): void {
-    console.log('[onBack clicked]');
     this.setCustomerShared(null);
     console.log('[onBack]: custSharedSerice.customer is ' + this._custSharedService.customer);
     this._router.navigate(['/customer']);
