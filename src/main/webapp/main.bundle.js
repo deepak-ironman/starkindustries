@@ -775,14 +775,7 @@ var NameListComponent = (function () {
         this._custService = _custService;
         this._router = _router;
         this._custSharedService = _custSharedService;
-        this.pageTitle = 'Product List';
-        this.imageWidth = 50;
-        this.imageMargin = 2;
-        this.showImage = false;
     }
-    NameListComponent.prototype.toggleImage = function () {
-        this.showImage = !this.showImage;
-    };
     NameListComponent.prototype.ngOnInit = function () {
         this.getAllCustomers();
     };
@@ -790,9 +783,6 @@ var NameListComponent = (function () {
         var _this = this;
         this._custService.getAllNames()
             .subscribe(function (customers) { return _this.customers = customers; }, function (error) { return _this.errorMessage = error; });
-    };
-    NameListComponent.prototype.onRatingClicked = function (message) {
-        this.pageTitle = 'Name List: ' + message;
     };
     NameListComponent.prototype.deleteNameById = function (nameId) {
         var _this = this;
@@ -803,19 +793,6 @@ var NameListComponent = (function () {
             _this.getAllCustomers();
         }, function (error) { console.log('Error in DeleteNameById: ' + _this.errorMessage); });
         console.log('deleteNameById: successCode is ' + this.statusCode);
-        //  problem line is: , error => {this.errorMessage = <any> error;
-        /* , error => {this.errorMessage = <any> error;
-                                  console.log('Error in DeleteNameById: ' + this.errorMessage)} ); */
-        // this._router.navigate(['/customer/displayAll']);
-        // this._router.navigate(['/customer']);
-        // this._router.navigate(['/customer/displayAll']);
-        /* this._custService.deleteNameById(nameId)
-          .subscribe(successCode => {
-                  // this.statusCode = successCode;
-                  // this.getAllArticles();
-                  // this.backToCreateArticle();
-              } ,
-               errorCode => this.statusCode = errorCode); */
     };
     NameListComponent.prototype.loadNameToEdit = function (id, cust) {
         console.log('loadNameToEdit: id is ' + id);
@@ -826,6 +803,9 @@ var NameListComponent = (function () {
         this._custSharedService.customer = id;
     };
     NameListComponent.prototype.onBack = function () {
+        console.log('[onBack clicked]');
+        this.setCustomerShared(null);
+        console.log('[onBack]: custSharedSerice.customer is ' + this._custSharedService.customer);
         this._router.navigate(['/customer']);
     };
     return NameListComponent;

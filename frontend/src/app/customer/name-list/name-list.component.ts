@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { CustomerService } from 'app/customer/customer.service';
 import { CustomerI } from 'app/customer/CustomerModelI';
+import { CustomerService } from 'app/customer/customer.service';
 import { CustomerSharedService } from 'app/customer-shared.service';
 
 @Component({
@@ -17,22 +17,13 @@ import { CustomerSharedService } from 'app/customer-shared.service';
 })
 @Injectable()
 export class NameListComponent implements OnInit {
-  pageTitle = 'Product List';
-  imageWidth = 50;
-  imageMargin = 2;
-  showImage = false;
   errorMessage: string;
-  listFilter: string;
   statusCode: number;
   customers: CustomerI[];
 
   constructor(private _custService: CustomerService,
               private _router: Router,
               private _custSharedService: CustomerSharedService) {
-  }
-
-  toggleImage(): void {
-    this.showImage = !this.showImage;
   }
 
   ngOnInit(): void {
@@ -45,34 +36,14 @@ export class NameListComponent implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
-  onRatingClicked(message: string): void {
-    this.pageTitle = 'Name List: ' + message;
-  }
-
   deleteNameById(nameId: string): void {
     console.log('deleteNameById: id is ' + nameId);
     this._custService.deleteNameById(nameId)
       .subscribe(successCode => {
-        this.statusCode = successCode; this.getAllCustomers(); }
-      , error => {console.log('Error in DeleteNameById: ' + this.errorMessage)} );
+        this.statusCode = successCode; this.getAllCustomers();
+      },
+      error => { console.log('Error in DeleteNameById: ' + this.errorMessage) });
     console.log('deleteNameById: successCode is ' + this.statusCode);
-
-//  problem line is: , error => {this.errorMessage = <any> error;
-
-  /* , error => {this.errorMessage = <any> error;
-                            console.log('Error in DeleteNameById: ' + this.errorMessage)} ); */
-
-    // this._router.navigate(['/customer/displayAll']);
-    // this._router.navigate(['/customer']);
-    // this._router.navigate(['/customer/displayAll']);
-    /* this._custService.deleteNameById(nameId)
-      .subscribe(successCode => {
-		      // this.statusCode = successCode;
-		      // this.getAllArticles();
-		      // this.backToCreateArticle();
-		  } ,
-		   errorCode => this.statusCode = errorCode); */
-
   }
 
   loadNameToEdit(id: string, cust: CustomerI): void {
@@ -86,6 +57,9 @@ export class NameListComponent implements OnInit {
   }
 
   onBack(): void {
+    console.log('[onBack clicked]');
+    this.setCustomerShared(null);
+    console.log('[onBack]: custSharedSerice.customer is ' + this._custSharedService.customer);
     this._router.navigate(['/customer']);
   }
 
