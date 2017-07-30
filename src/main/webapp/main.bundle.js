@@ -585,13 +585,8 @@ var CustomerService = (function () {
             .catch(this.handleError);
     };
     CustomerService.prototype.handleError = function (error) {
-        // console.error(error);
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(error.json().error || 'Server error');
     };
-    /* orig rem by dee private handleError(error: Response) {
-     console.error(error);
-     return Observable.throw(error.json().error || 'Server error');
-   } */
     // Create name
     CustomerService.prototype.createName = function (customer) {
         var cpHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
@@ -600,14 +595,12 @@ var CustomerService = (function () {
             .map(function (success) { return success.status; })
             .catch(this.handleError);
     };
-    // Update name //in progress
+    // Update name
     CustomerService.prototype.updateName = function (customer) {
         var cpHeaders = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: cpHeaders });
         console.log('**** in updateName ****');
         console.log('[API_URL + Customers] ' + API_URL + '/customers');
-        console.log(' ');
-        // let id = '{' + customer.id + '}';
         return this._http.put(API_URL + '/customers/' + customer.id, customer, options)
             .map(function (success) { return success.status; }, function (success) { return console.log('[success]: ' + success.status); })
             .catch(this.handleError);

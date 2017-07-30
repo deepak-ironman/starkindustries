@@ -37,21 +37,14 @@ export class CustomerService {
     cpParams.set('id', id);
     const options = new RequestOptions({ headers: cpHeaders, params: cpParams });
     return this._http.get(API_URL + '/customers/' + id, options)
-      .map((response: Response) => <CustomerI> response.json())
+      .map((response: Response) => <CustomerI>response.json())
       .do(data => console.log('Name By Id: ' + JSON.stringify(data)))
-      // .map(success => success.status)
       .catch(this.handleError);
   }
 
   private handleError(error: any) {
-    // console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
-
-   /* orig rem by dee private handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
-  } */
 
   // Create name
   createName(customer: CustomerI): Observable<number> {
@@ -63,22 +56,19 @@ export class CustomerService {
       .catch(this.handleError);
   }
 
-  // Update name //in progress
+  // Update name
   updateName(customer: CustomerI): Observable<number> {
     const cpHeaders = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: cpHeaders });
 
     console.log('**** in updateName ****');
     console.log('[API_URL + Customers] ' + API_URL + '/customers');
-    console.log(' ');
-    // let id = '{' + customer.id + '}';
-    return this._http.put(API_URL + '/customers/' + customer.id, customer, options)
-      .map(success =>  success.status,
-          success => console.log('[success]: ' + success.status) )
 
+    return this._http.put(API_URL + '/customers/' + customer.id, customer, options)
+      .map(success => success.status,
+      success => console.log('[success]: ' + success.status))
       .catch(this.handleError);
   }
-
 
   // Delete name
   deleteNameById(nameId: string): Observable<number> {
@@ -86,12 +76,10 @@ export class CustomerService {
     const cpParams = new URLSearchParams();
     cpParams.set('id', nameId);
     const options = new RequestOptions({ headers: cpHeaders, params: cpParams });
+
     return this._http.delete(API_URL + '/customers/' + nameId, options)
       .map(success => success.status)
       .catch(this.handleError);
-
   }
-
-
 
 }
