@@ -1,0 +1,24 @@
+<h1>Parent component</h1>
+<!-- Input message box for parent to send to child -->
+ <fieldset>
+    <label>
+      Message for child:
+      <input type="text" class="form-control" [(ngModel)]="parentText"
+        placeholder="Enter your text here">
+    </label>
+</fieldset>
+
+<!-- Shows the alert message -->
+<div *ngIf="alertVisible">
+
+  <div class="alert alert-info alert-dismissible">
+    <h1>{{receivedMsg}}</h1>
+    <button class='btn btn-primary' (click)="reset()">Reset</button>
+  </div>
+
+</div>
+
+<!-- shows the child component -->
+<app-name-detail [ishidden]="alertVisible"
+  [childText]="parentText" (msgForParent)="clicked($event)">
+</app-name-detail>

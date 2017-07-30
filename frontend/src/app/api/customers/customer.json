@@ -1,0 +1,64 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Tony",
+      "surname": "Stark",
+      "country": "USA"
+    },
+    {
+      "id": 2,
+      "name": "Bruce",
+      "surname": "Wayne",
+      "country": "UK"
+    },
+    {
+      "id": 3,
+      "name": "Clark",
+      "surname": "Kent",
+      "country": "SA"
+    },
+    {
+      "id": 6,
+      "name": "Deepak",
+      "surname": "Singh",
+      "country": "United States of America"
+    },
+    {
+      "id": 7,
+      "name": "DeepakS",
+      "surname": "Singh",
+      "country": "United States of America"
+    },
+    {
+      "id": 9,
+      "name": "Deepak",
+      "surname": "Singh",
+      "country": "South Africa"
+    },
+    {
+      "id": 11,
+      "name": "Darryl",
+      "surname": "Toy",
+      "country": "South Africa"
+    },
+    {
+      "id": 12,
+      "name": "Bill",
+      "surname": "Gates",
+      "country": "United States of America"
+    },
+    {
+      "id": 16,
+      "name": "asdlfjsdalfjks",
+      "surname": "adsflkdsajf;ldsfjkdslkkfja",
+      "country": "asdfdsafdasfadsfsdafsdafsdafdsfadsfasdfdsaf"
+    },
+    {
+      "id": 15,
+      "name": "sdfmdsa./fmasd./fmdasf./dsm,fa/.sd,amf.asd,fmsd.fsd,amf.dsa,mf.ds,fm",
+      "surname": "sfsdfs",
+      "country": "Germany"
+    }
+  ]
+}

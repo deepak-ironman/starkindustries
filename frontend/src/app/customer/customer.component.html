@@ -1,0 +1,67 @@
+<p>
+  customer works!
+</p>
+
+<div class="container">
+  <div [hidden]="submitted">
+    <!-- <h1>Welcome to Name Capture Form</h1> -->
+     <h1 *ngIf="!isUpate; else updateHeadingTemplate">
+      Welcome to Capture Form
+    </h1>
+    <ng-template #updateHeadingTemplate>
+      <h1>Welcome to Update Form </h1>
+    </ng-template>
+
+    <form (ngSubmit)="onNameFormSubmit(customer)" #customerForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required
+               [(ngModel)] = "customer.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" class="form-control" id="surname" required
+               [(ngModel)] = "customer.surname" name="surname"
+               #surname = "ngModel">
+        <div [hidden] = "surname.valid || surname.pristine" class="alert alert-danger">
+          Surname is required
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select [(ngModel)] = "customer.country" name="country" class="form-control" required>
+          <!-- use *ngFor to list the countries as options -->
+          <option *ngFor = "let country of countries">{{country}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!customerForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newCustomer(); customerForm.reset()">Reset</button>
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9  pull-left">{{ customer.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Surname</div>
+      <div class="col-xs-9 pull-left">{{ customer.surname }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Country</div>
+      <div class="col-xs-9 pull-left">{{ customer.country }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="backToCapture()">BackToCapture</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "customers": [
+    {"id": 1,
+      "name": "Tony",
+      "surname": "Stark",
+      "country": "USA"
+    },
+    {
+      "id": 2,
+      "name": "Bruce",
+      "surname": "Wayne",
+      "country": "UK"
+    },
+    {
+      "id": 3,
+      "name": "Clark",
+      "surname": "Kent",
+      "country": "SA"
+    }
+  ]
+}
