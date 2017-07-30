@@ -179,7 +179,7 @@ AppModule = __decorate([
 /***/ "../../../../../src/app/cities/cities.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Parent component</h1>\n<!-- Input message box for parent to send to child -->\n <fieldset>\n    <label>\n      Message for child:\n      <input type=\"text\" class=\"form-control\" [(ngModel)]=\"parentText\"\n        placeholder=\"Enter your text here\">\n    </label>\n</fieldset>\n\n<!-- Shows the alert message -->\n<div *ngIf=\"alertVisible\">\n\n  <div class=\"alert alert-info alert-dismissible\">\n    <h1>{{receivedMsg}}</h1>\n    <button class='btn btn-primary' (click)=\"reset()\">Reset</button>\n  </div>\n\n</div>\n\n<!-- shows the child component -->\n<app-name-detail [ishidden]=\"alertVisible\"\n  [childText]=\"parentText\" (msgForParent)=\"clicked($event)\">\n</app-name-detail>\n"
+module.exports = "<h1>Parent component</h1>\n<!-- Input message box for parent to send to child -->\n<fieldset>\n  <label>\n      Message for child:\n      <input type=\"text\" class=\"form-control\" [(ngModel)]=\"parentText\"\n        placeholder=\"Enter your text here\">\n    </label>\n</fieldset>\n\n<!-- Shows the alert message -->\n<div *ngIf=\"alertVisible\">\n  <div class=\"alert alert-info alert-dismissible\">\n    <h1>{{receivedMsg}}</h1>\n    <button class='btn btn-primary' (click)=\"reset()\">Reset</button>\n  </div>\n</div>\n\n<!-- shows the child component -->\n<app-name-detail [ishidden]=\"alertVisible\"\n  [childText]=\"parentText\" (msgForParent)=\"clicked($event)\">\n</app-name-detail>\n"
 
 /***/ }),
 
