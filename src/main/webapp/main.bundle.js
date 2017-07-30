@@ -637,7 +637,7 @@ var _a;
 /***/ "../../../../../src/app/customer/name-detail/name-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>{{pageTitle}}</h2>\n\n<div [hidden]=\"ishidden\">\n  <a class='btn btn-primary' (click)=\"buttonClicked()\">Submit</a>\n  {{childText}}\n</div>\n"
+module.exports = "<h2>{{pageTitle}}</h2>\n\n<div [hidden]=\"ishidden\">\n  <a class='btn btn-primary' (click)=\"buttonClicked()\">Submit</a> {{childText}}\n</div>\n"
 
 /***/ }),
 
