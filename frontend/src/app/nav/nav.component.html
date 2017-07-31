@@ -1,11 +1,14 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-  <a class="navbar-brand" href="#">IronMan</a>
   <ul class="nav navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="navbar-brand">IronMan</a>
+    </li>
+
     <li class="nav-item">
       <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
       <!-- <a class="navbar-brand" href="#" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a> -->
       <!-- <li class="nav-item active"> weird effect,this makes home look odd-->
-      <a class="navbar-brand" href="#" [routerLink]="['/']">Home</a>
+      <a class="navbar-brand" href="#" [routerLink]="['/home']"> Home</a>
     </li>
     <li class="nav-item">
       <!-- <a class="nav-link" href="#">About</a> -->
@@ -19,10 +22,47 @@
       <!-- <a class="nav-link" href="#" [routerLink]="['cities']">Cities</a> -->
       <a class="navbar-brand" href="#" [routerLink]="['/cities']">Cities</a>
     </li>
-    </ul>
+
+    <li class="nav-item">
+      <a class="navbar-brand" button type="btn-margin" *ngIf="!_auth.isAuthenticated()" (click)="_auth.login()">LogIn</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="navbar-brand" button type="btn-margin" *ngIf="_auth.isAuthenticated()" (click)="_auth.logout()">LogOut</a>
+    </li>
+
+
+    <!-- <button
+      class="btn btn-primary btn-margin"
+      *ngIf="!auth.isAuthenticated()"
+      (click)="_auth.login()">
+        Log In
+    </button>
+
+    <button
+      class="btn btn-primary btn-margin"
+      *ngIf="_auth.isAuthenticated()"
+      (click)="_auth.logout()">
+        Log Out
+    </button> -->
+  </ul>
+
+  <!-- <li>
+      <button class="btn btn-primary btn-margin"
+        *ngIf="!isAuthenticated()" (click)="login()">Log In
+      </button>
+    </li>
+
+    <li>
+      <button class="btn btn-primary btn-margin"
+        *ngIf="isAuthenticated()" (click)="logOut()">Log Out
+      </button>
+    </li> -->
+
+
   <ul class="nav navbar-nav">
 
-   <!--
+    <!--
     <p>
    nav works!
     {{nav}}
@@ -40,5 +80,3 @@
     -->
   </ul>
 </nav>
-
-
