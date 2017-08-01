@@ -11,6 +11,7 @@ import { CustomerModule } from './customer/customer.module';
 import { AuthService } from './auth-service/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { HomeComponent } from './home/home.component';
+import { AuthguardGuard } from './auth-guard/authguard.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { HomeComponent } from './home/home.component';
       { path: 'cities', component: CitiesComponent }
     ])*/
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
