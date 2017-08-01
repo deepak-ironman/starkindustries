@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CustomerI } from 'app/customer/CustomerModelI';
 import { Customer } from 'app/customer/CustomerModel';
@@ -21,7 +22,8 @@ export class CustomerComponent implements OnInit {
   errorMessage: string;
 
   constructor(private _custService: CustomerService,
-              private _custSharedService: CustomerSharedService) {
+              private _custSharedService: CustomerSharedService,
+              private _router: Router) {
     // Create a default customer
     // this.customer = new CustomerI(null, '', '', '');
     // moved to ngOnInit() -->this.customer = new Customer(this.myid, '', '', '');
@@ -55,8 +57,11 @@ export class CustomerComponent implements OnInit {
 
   newCustomer() {
     console.log('newCustomer----> name is: ' + name);
+
     if (this.isUpate) {
-      this.customer = this._custSharedService.getDefaultCustomer();
+      console.log('customer to update is --->' + this._custSharedService.customer);
+      // this.customer = this._custSharedService.getDefaultCustomer();
+      this.getNameById(this._custSharedService.customer);
     }
 
     // ***NOTES**** how to check if string is null or undefined
@@ -78,9 +83,9 @@ export class CustomerComponent implements OnInit {
     this.submitted = false; // submitted=false
     this.isUpate = false; // reset the value
     // this.myid++;
-    // this._custSharedService.setCustomer('');
-    this.customer = this._custSharedService.getDefaultCustomer();
-
+     // this._custSharedService.setCustomer('');
+    // this.customer = this._custSharedService.getDefaultCustomer();
+    this._router.navigate(['/customer']);
   }
 
   getNameById(id: string) {
