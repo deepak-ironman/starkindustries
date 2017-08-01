@@ -11,7 +11,7 @@ export class AuthService {
     domain: AUTH_CONFIG.domain,
     responseType: 'token id_token',
     audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:8080',
     scope: 'openid'
   });
 
@@ -29,7 +29,8 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/home']);
+        console.log('[handleAuthentication]: ');
+        this.router.navigate(['/callback']); // /home
       } else if (err) {
         /* this.router.navigate(['/home']); */
         this.router.navigate(['/']); // changed by dee

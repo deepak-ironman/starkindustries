@@ -48,16 +48,18 @@ export class NameListComponent implements OnInit {
 
   loadNameToEdit(id: string, cust: CustomerI): void {
     console.log('loadNameToEdit: id is ' + id);
-    this.setCustomerShared(id);
+    // this.setCustomerShared(id);
+    this._custSharedService.setCustomer(id);
     this._router.navigate(['/customer']);
   }
 
-  private setCustomerShared(id: string): void {
+  /* private setCustomerShared(id: string): void {
     this._custSharedService.customer = id;
-  }
+  } */
 
   onBack(): void {
-    this.setCustomerShared(null);
+    // this.setCustomerShared('');
+    this._custSharedService.setCustomer('');
     console.log('[onBack]: custSharedSerice.customer is ' + this._custSharedService.customer);
     this._router.navigate(['/customer']);
   }

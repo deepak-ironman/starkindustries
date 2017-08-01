@@ -15,6 +15,8 @@ export class CustomerSharedService {
       return this.defaultCustomer;
   }
 
-
+  setCustomer(id: string): void {
+    this.customer = id;
+  }
 
 }

@@ -56,7 +56,6 @@ export class CustomerComponent implements OnInit {
   newCustomer() {
     console.log('newCustomer----> name is: ' + name);
     if (this.isUpate) {
-      this.isUpate = false;
       this.customer = this._custSharedService.getDefaultCustomer();
     }
 
@@ -77,7 +76,11 @@ export class CustomerComponent implements OnInit {
 
   backToCapture() {
     this.submitted = false; // submitted=false
+    this.isUpate = false; // reset the value
     // this.myid++;
+    // this._custSharedService.setCustomer('');
+    this.customer = this._custSharedService.getDefaultCustomer();
+
   }
 
   getNameById(id: string) {
