@@ -4,6 +4,14 @@
 # Log file
 *.log
 
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
 # BlueJ files
 *.ctxt
 
@@ -23,6 +31,22 @@ hs_err_pid*
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 ### STS ###
 .apt_generated
