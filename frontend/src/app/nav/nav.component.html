@@ -3,80 +3,25 @@
     <li class="nav-item">
       <a class="navbar-brand">IronMan</a>
     </li>
-
     <li class="nav-item">
-      <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-      <!-- <a class="navbar-brand" href="#" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a> -->
-      <!-- <li class="nav-item active"> weird effect,this makes home look odd-->
       <a class="navbar-brand" href="#" [routerLink]="['/home']"> Home</a>
     </li>
     <li class="nav-item">
-      <!-- <a class="nav-link" href="#">About</a> -->
       <a class="navbar-brand" href="#" [routerLink]="['/customer']">Capture</a>
     </li>
     <li class="nav-item">
-      <!-- <a class="nav-link" href="#">About</a> -->
       <a class="navbar-brand" href="#" [routerLink]="['/customer/displayAll']">Display</a>
     </li>
     <li class="nav-item">
-      <!-- <a class="nav-link" href="#" [routerLink]="['cities']">Cities</a> -->
       <a class="navbar-brand" href="#" [routerLink]="['/cities']">Cities</a>
     </li>
-
     <li class="nav-item">
       <a class="navbar-brand" button type="btn-margin" *ngIf="!_auth.isAuthenticated()" (click)="_auth.login()">LogIn</a>
     </li>
-
     <li class="nav-item">
       <a class="navbar-brand" button type="btn-margin" *ngIf="_auth.isAuthenticated()" (click)="_auth.logout()">LogOut</a>
     </li>
-
-
-    <!-- <button
-      class="btn btn-primary btn-margin"
-      *ngIf="!auth.isAuthenticated()"
-      (click)="_auth.login()">
-        Log In
-    </button>
-
-    <button
-      class="btn btn-primary btn-margin"
-      *ngIf="_auth.isAuthenticated()"
-      (click)="_auth.logout()">
-        Log Out
-    </button> -->
   </ul>
-
-  <!-- <li>
-      <button class="btn btn-primary btn-margin"
-        *ngIf="!isAuthenticated()" (click)="login()">Log In
-      </button>
-    </li>
-
-    <li>
-      <button class="btn btn-primary btn-margin"
-        *ngIf="isAuthenticated()" (click)="logOut()">Log Out
-      </button>
-    </li> -->
-
-
   <ul class="nav navbar-nav">
-
-    <!--
-    <p>
-   nav works!
-    {{nav}}
-    </p>
-
-    <li class="nav-item">
-      <a class="nav-link" href="https://medium.com/@beeman"><i class="fa fa-medium" aria-hidden="true"></i></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="https://twitter.com/@beeman_nl"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="https://github.com/beeman"><i class="fa fa-github" aria-hidden="true"></i></a>
-    </li>
-    -->
   </ul>
 </nav>

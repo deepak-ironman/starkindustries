@@ -12,24 +12,28 @@ import { CustomerSharedService } from 'app/customer-shared.service';
   styleUrls: ['./customer.component.scss']
 })
 export class CustomerComponent implements OnInit {
-
   countries = ['South Africa', 'Germany', 'United States of America', 'Mexico'];
   submitted = false;
   isUpate = false;
   customer: CustomerI;
   customers: CustomerI[];
-  // myid = 15;
   errorMessage: string;
 
   constructor(private _custService: CustomerService,
               private _custSharedService: CustomerSharedService,
               private _router: Router) {
     // Create a default customer
-    // this.customer = new CustomerI(null, '', '', '');
-    // moved to ngOnInit() -->this.customer = new Customer(this.myid, '', '', '');
     console.log('[CustomerComponent constr]:  injected _custSharedService id: '
       + _custSharedService.customer);
+  }
 
+  ngOnInit(): void {
+    this.customer = this._custSharedService.getDefaultCustomer();
+
+    if (typeof this._custSharedService.customer !== 'undefined'
+      && this._custSharedService.customer) {
+        this.getNameById(this._custSharedService.customer);
+    }
   }
 
   onNameFormSubmit(customer: CustomerI) {
@@ -37,12 +41,10 @@ export class CustomerComponent implements OnInit {
     console.log('onSubmit---> name is: ' + this.logCust(this.customer));
 
     if (this.isUpate) {
-      // For an update
       this._custService.updateName(this.customer)
         .subscribe(result => console.log('[UpdateName Result is]: ' + result));
     } else {
       // For a new customer call create
-      // this.customer.id = this.myid; // TODO take this line out
       this._custService.createName(this.customer)
         .subscribe(result => console.log('[CreateName Result is]: ' + result));
     }
@@ -55,36 +57,17 @@ export class CustomerComponent implements OnInit {
           ' [id: ' + customer.id + ' ]';
   }
 
-  newCustomer() {
+  newCustomer(): void {
     console.log('newCustomer----> name is: ' + name);
-
     if (this.isUpate) {
       console.log('customer to update is --->' + this._custSharedService.customer);
-      // this.customer = this._custSharedService.getDefaultCustomer();
       this.getNameById(this._custSharedService.customer);
     }
-
-    // ***NOTES**** how to check if string is null or undefined
-    /* if(typeof RetailPrice!='undefined' && RetailPrice){
-   return this.RetailPrice; */
   }
 
-
-  ngOnInit(): void {
-    this.customer = this._custSharedService.getDefaultCustomer();
-
-    if (typeof this._custSharedService.customer !== 'undefined'
-      && this._custSharedService.customer) {
-        this.getNameById(this._custSharedService.customer);
-    }
-  }
-
-  backToCapture() {
-    this.submitted = false; // submitted=false
+  backToCapture(): void {
+    this.submitted = false;
     this.isUpate = false; // reset the value
-    // this.myid++;
-     // this._custSharedService.setCustomer('');
-    // this.customer = this._custSharedService.getDefaultCustomer();
     this._router.navigate(['/customer']);
   }
 
@@ -98,5 +81,4 @@ export class CustomerComponent implements OnInit {
         console.log('Error in DeleteNameById: ' + this.errorMessage)
       });
   }
-
 }
