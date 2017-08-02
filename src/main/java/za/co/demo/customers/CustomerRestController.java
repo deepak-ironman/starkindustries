@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import java.util.List;
 
 @RestController
@@ -39,20 +38,4 @@ public class CustomerRestController {
 	public void deleteCustomer(@PathVariable Long id) {
 		customerService.deleteCustomer(id);
 	}
-	
-	
-	/*@RequestMapping("/names")
-	public List<Customer> getAllCustomers() {
-		return Arrays.asList(
-				new Customer(Long.valueOf("1"), "Tony", "Stark", "USA"),
-				new Customer(Long.valueOf("2"), "Bruce", "Wayne", "UK"),
-				new Customer(Long.valueOf("3"), "Clark", "Kent", "SA")
-		);
-	}*/
-	
-	
-	/*@RequestMapping("/names")
-	public String getAllCustomers() {
-		return "All names";
-	}*/
 }
