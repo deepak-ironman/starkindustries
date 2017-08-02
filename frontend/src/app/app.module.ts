@@ -12,7 +12,6 @@ import { AuthService } from './auth-service/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { HomeComponent } from './home/home.component';
 import { AuthguardGuard } from './auth-guard/authguard.guard';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,10 +26,6 @@ import { AuthguardGuard } from './auth-guard/authguard.guard';
     HttpModule,
     FormsModule,
     CustomerModule
-    /* RouterModule.forRoot([
-      { path: '', redirectTo: 'cities', pathMatch: 'full' },
-      { path: 'cities', component: CitiesComponent }
-    ])*/
   ],
   providers: [AuthService, AuthguardGuard],
   bootstrap: [AppComponent]
