@@ -11,7 +11,7 @@ export class AuthService {
     domain: AUTH_CONFIG.domain,
     responseType: 'token id_token',
     audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    redirectUri: 'http://localhost:8080',
+    redirectUri: AUTH_CONFIG.callbackURL,
     scope: 'openid'
   });
 
@@ -30,10 +30,9 @@ export class AuthService {
         window.location.hash = '';
         this.setSession(authResult);
         console.log('[handleAuthentication]: ');
-        this.router.navigate(['/callback']); // /home
+        this.router.navigate(['/callback']);
       } else if (err) {
-        /* this.router.navigate(['/home']); */
-        this.router.navigate(['/']); // changed by dee
+        this.router.navigate(['/']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -64,5 +63,4 @@ export class AuthService {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
-
 }

@@ -9,7 +9,6 @@ import 'rxjs/add/operator/catch';
 import { CustomerI } from 'app/customer/CustomerModelI';
 import { CustomerService } from 'app/customer/customer.service';
 import { CustomerSharedService } from 'app/customer-shared.service';
-
 @Component({
   selector: 'app-name-list',
   templateUrl: './name-list.component.html',
@@ -48,20 +47,13 @@ export class NameListComponent implements OnInit {
 
   loadNameToEdit(id: string, cust: CustomerI): void {
     console.log('loadNameToEdit: id is ' + id);
-    // this.setCustomerShared(id);
     this._custSharedService.setCustomer(id);
     this._router.navigate(['/customer']);
   }
 
-  /* private setCustomerShared(id: string): void {
-    this._custSharedService.customer = id;
-  } */
-
   onBack(): void {
-    // this.setCustomerShared('');
     this._custSharedService.setCustomer('');
     console.log('[onBack]: custSharedSerice.customer is ' + this._custSharedService.customer);
     this._router.navigate(['/customer']);
   }
-
 }
