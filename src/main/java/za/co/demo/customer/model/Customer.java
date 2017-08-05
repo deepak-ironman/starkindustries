@@ -1,4 +1,4 @@
-package za.co.demo.customers;
+package za.co.demo.customer.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

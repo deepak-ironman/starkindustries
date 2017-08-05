@@ -1,9 +1,12 @@
-package za.co.demo.customers;
+package za.co.demo.customer.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import za.co.demo.customer.model.Customer;
+import za.co.demo.customer.repository.CustomerRepository;
 
 @Service
 public class CustomerService {

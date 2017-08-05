@@ -1,6 +1,10 @@
-package za.co.demo.customers;
+package za.co.demo.customer.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import za.co.demo.customer.model.Customer;
+import za.co.demo.customer.service.CustomerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
