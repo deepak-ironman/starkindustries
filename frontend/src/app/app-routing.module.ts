@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthguardGuard } from 'app/auth-guard/authguard.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthguardGuard] },
+  { path: 'home', component: HomeComponent },
   { path: 'callback', component: CallbackComponent, canActivate: [AuthguardGuard] },
   { path: 'cities', component: CitiesComponent, canActivate: [AuthguardGuard] },
   { path: '', redirectTo: 'NavComponent', pathMatch: 'full' },
